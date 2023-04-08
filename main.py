@@ -18,6 +18,7 @@ async def suggest(ctx, *, suggestion: str):
     await sleep(1)
     await ctx.message.delete()
     channel = client.get_channel(969009498058530863)
-    await channel.send(f'{ctx.message.author.mention} has suggested: {suggestion}')
-
-client.run('')
+    embed = discord.Embed(title='New Suggestion', description=f'{suggestion}', color=0x00ff00)
+    embed.add_field(name="Author", value=ctx.message.author.mention, inline=False)
+    await channel.send(embed=embed)
+client.run('urtokenhere')
