@@ -20,4 +20,4 @@ async def suggest(ctx, *, suggestion: str):
     channel = client.get_channel(969009498058530863)
     await channel.send(f'{ctx.message.author.mention} has suggested: {suggestion}')
 
-client.run('MTA5NDIzOTE3MTM2ODk5Njk4Nw.Gqd0pr.eDCOxnsxRkB09MoTSjFxgFwezd00nvc7fIqE58')
+client.run('')
