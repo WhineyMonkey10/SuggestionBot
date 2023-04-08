@@ -6,12 +6,13 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
-token = os.getenv('TOKEN')
+token = str(os.getenv('TOKEN'))
+prefix = str(os.getenv('PREFIX'))
 
 intents = discord.Intents.default()
 intents.message_content = True
 
-client = Bot(command_prefix=';', intents=intents)
+client = Bot(command_prefix=prefix, intents=intents)
 
 @client.event
 async def on_ready():
@@ -26,4 +27,4 @@ async def suggest(ctx, *, suggestion: str):
     embed = discord.Embed(title='New Suggestion', description=f'{suggestion}', color=0x00ff00)
     embed.add_field(name="Author", value=ctx.message.author.mention, inline=False)
     await channel.send(embed=embed)
-client.run('urtokenhere')
+client.run(token)
