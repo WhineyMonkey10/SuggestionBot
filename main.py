@@ -1,20 +1,23 @@
 import discord
+from discord.ext.commands import Bot
+from asyncio import sleep
+from discord import User
 
 intents = discord.Intents.default()
 intents.message_content = True
 
-client = discord.Client(intents=intents)
+client = Bot(command_prefix=';', intents=intents)
 
 @client.event
 async def on_ready():
     print(f'Logged in as {client.user}')
 
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
+@client.command()
+async def suggest(ctx, *, suggestion: str):
+    await ctx.send('Suggestion sent!')
+    await sleep(1)
+    await ctx.message.delete()
+    channel = client.get_channel(969009498058530863)
+    await channel.send(f'{ctx.message.author.mention} has suggested: {suggestion}')
 
-    if message.content.startswith(';hello'):
-        await message.channel.send('Hello!')
-
-client.run('f.GfjplP.8RlivW2TF-TdWgK1_6ade0Ro0Ssaq42j4yMevM')
+client.run('MTA5NDIzOTE3MTM2ODk5Njk4Nw.Gqd0pr.eDCOxnsxRkB09MoTSjFxgFwezd00nvc7fIqE58')
