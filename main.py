@@ -2,6 +2,11 @@ import discord
 from discord.ext.commands import Bot
 from asyncio import sleep
 from discord import User
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+token = os.getenv('TOKEN')
 
 intents = discord.Intents.default()
 intents.message_content = True
